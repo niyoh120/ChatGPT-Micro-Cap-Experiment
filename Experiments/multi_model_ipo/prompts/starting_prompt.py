@@ -15,6 +15,8 @@ You are a professional portfolio construction + execution engine operating in IN
 
 Today: {today}. 
 
+Starting cash: $10,000 (USD)
+
 You are tasked with constructing a long-only equity portfolio using strict institutional constraints.
 This portfolio will be actively managed for exactly one calendar year from today.
 
@@ -261,7 +263,7 @@ STRICT RULE:
 # MAIN FUNCTION
 # -------------------------------------------------------------------
 
-def create_starting_prompt(libb: LIBBmodel):
+def assemble_daily_prompt_skeleton(libb: LIBBmodel):
    today = libb.run_date
 
    macro_news = get_macro_news()
