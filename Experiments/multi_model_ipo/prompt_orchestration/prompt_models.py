@@ -45,7 +45,7 @@ def prompt_chatgpt(text: str, model: str = "gpt-4.1-mini") -> str:
     return content
 
 def prompt_deep_research(skeleton, libb) -> tuple[str, str]:
-    
+
     model = libb._model_path.replace("Experiments/multi_model_ipo/artifacts/", "")
     text = create_deep_research_prompt(skeleton, libb)
         
@@ -67,14 +67,13 @@ def prompt_daily_report(skeleton, libb) -> tuple[str, str]:
     else:
         raise RuntimeError(f"Unidentified model: {model}")
     
-def prompt_starting_report(libb: LIBBmodel):
+def prompt_starting_report(prompt: str, libb: LIBBmodel):
 
     model = libb._model_path.replace("Experiments/multi_model_ipo/artifacts/", "")
-    text = create_starting_prompt()
 
     if model == "deepseek":
-        return prompt_deepseek(text), text
+        return prompt_deepseek(prompt), prompt
     elif model == "gpt-4.1":
-        return prompt_chatgpt(text), text
+        return prompt_chatgpt(prompt), prompt
     else:
         raise RuntimeError(f"Unidentified model: {model}")
