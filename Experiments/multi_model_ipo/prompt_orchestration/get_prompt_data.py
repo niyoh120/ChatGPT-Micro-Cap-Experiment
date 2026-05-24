@@ -585,11 +585,11 @@ def format_universe_for_prompt(companies):
             f"MOM_3M={c['mom_3m']}% | "
             f"SECTOR={c['sector']} | "
             f"FLAGS={','.join(c['flags']) if c['flags'] else 'NONE'} | "
-            f"FIN=rev:{fmt_billions(c['revenue'])}, "
-            f"ni:{fmt_billions(c['net_income'])}, "
+            f"FIN=revenue:{fmt_billions(c['revenue'])}, "
+            f"net_income:{fmt_billions(c['net_income'])}, "
             f"cash:{fmt_billions(c['cash'])}, "
             f"debt:{fmt_billions(c['debt'])}, "
-            f"ocf:{fmt_billions(c['ocf'])} | "
+            f"operating_cash_flow:{fmt_billions(c['ocf'])} | "
             f"DESC={truncate(c['description'])}"
         )
 
