@@ -75,6 +75,7 @@ def build_eligibility_series(
     Supports:
     - pandas Series
     - list[str]
+    - list[dict] (from `get_ipo_universe()`)
     - tuple[str]
     - set[str]
     - single ticker string
@@ -101,6 +102,11 @@ def build_eligibility_series(
 
     elif isinstance(tickers, pd.Series):
         tickers = tickers.dropna().astype(str).tolist()
+
+    elif isinstance(tickers, list):
+        if tickers and isinstance(tickers[0], dict):
+            # if tickers is list[dict]
+            tickers = [item["ticker"] for item in tickers]
 
     elif not isinstance(tickers, Iterable):
         tickers = [str(tickers)]
